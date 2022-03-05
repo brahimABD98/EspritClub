@@ -1,0 +1,33 @@
+<h2>Classrooms list:</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>Editer</th>
+    </tr>
+    {% for l in list %}
+    <tr>
+
+        <td>
+            {{ l.id }}
+        </td>
+            <td>
+                {{ l.nom }}
+            </td>
+        <td>
+            <a href="{{ path('updateform',{'id':l.id } ) }}">Produit détailler</a>
+            <a href=" {{ path ('delete', {'id':l.id} ) }} ">supprimer</a>
+        </td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+<a href=" {{ path('formAddClassroom')}}">ajouter classroom</a>
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>

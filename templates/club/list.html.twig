@@ -1,0 +1,44 @@
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<h2>Club list</h2>
+<table>
+   <tr>
+       <th>
+           id
+       </th>
+       <th>
+           date
+       </th>
+       <th>
+           Student id et email
+       </th>
+       <th>
+           modification
+       </th>
+   </tr>
+  {% for club in clubs %}
+    <tr>
+
+        <td>
+            {{ club.id }}
+        </td>
+        <td>
+            {{ club.creation_date | date('Y-m-d H:i:s')}}
+        </td>
+        <td>
+            {% for c in club.Student %}
+               {{ c.id}} {{ "|" }} {{ c.email }}
+            {% endfor %}
+        </td>
+        <td>
+
+                <a href="{{ path('updateClub',{'id':club.id}) }}" >modifier</a>
+                <a href="{{ path('deleteclub',{'id':club.id}) }}">supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ path('addclub') }}">Ajouter club</a>
